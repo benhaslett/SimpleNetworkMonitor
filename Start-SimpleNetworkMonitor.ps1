@@ -1,4 +1,4 @@
-$monitorhost = "beast"
+$monitorhost = "www.google.com"
 
 
 function Say-Text
@@ -33,6 +33,6 @@ While($true){
             $errormsg = $_
         }
     }
-    say-text '$monitorhost BACK!'
+    say-text "$monitorhost BACK!"
 
 }
