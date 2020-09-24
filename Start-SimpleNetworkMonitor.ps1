@@ -1,12 +1,10 @@
 $monitorhost = "www.google.com"
 
 
-function Say-Text
-{
+function Out-TextToVoice{
     param ([Parameter(Mandatory=$true, ValueFromPipeline=$true)] [string] $Text)
-    [Reflection.Assembly]::LoadWithPartialName('System.Speech') | Out-Null
-    $object = New-Object System.Speech.Synthesis.SpeechSynthesizer
-    $object.Speak($Text)
+    Add-Type -AssemblyName System.Speech
+    (New-Object -ComObject SAPI.SpVoice).Speak("$text")
 }
 
 
@@ -22,7 +20,7 @@ While($true){
         }
     }
 
-    say-text "$monitorhost not responding"
+    Out-TextToVoice "$monitorhost not responding"
 
     
     while(!(Test-Connection $monitorhost)){
@@ -33,6 +31,6 @@ While($true){
             $errormsg = $_
         }
     }
-    say-text "$monitorhost BACK!"
+    Out-TextToVoice "$monitorhost BACK!"
 
 }
