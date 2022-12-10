@@ -1,2 +1,2 @@
 # SimpleNetworkMonitor
-A quick and dirt network monitor alert script
+A quick and dirty network monitor alert script
